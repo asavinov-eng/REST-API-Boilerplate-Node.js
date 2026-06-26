@@ -81,3 +81,5 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
   console.log(`API docs: http://localhost:${PORT}/api-docs`)
 })
+import announcementsRouter from './src/routes/announcements.routes.js';
+app.use('/announcements', announcementsRouter);
