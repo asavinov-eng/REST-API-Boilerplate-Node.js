@@ -1,0 +1,16 @@
+### Get all announcements
+GET http://localhost:3000/announcements
+
+###
+
+### Create announcement
+POST http://localhost:3000/announcements
+Content-Type: application/json
+
+{
+  "title": "iPhone 15",
+  "description": "New phone",
+  "price": 999,
+  "category": "Electronics",
+  "contactInfo": "telegram:@test"
+}
