@@ -1,16 +1,102 @@
-### Get all announcements
-GET http://localhost:3000/announcements
+@baseUrl = http://localhost:3000/api
+@contentType = application/json
 
-###
+### 1. Get all announcements
+GET {{baseUrl}}/announcements
 
-### Create announcement
-POST http://localhost:3000/announcements
-Content-Type: application/json
+### 2. Get announcements with search (пошук)
+GET {{baseUrl}}/announcements?search=ноутбук
+
+### 3. Get announcements sorted by newest
+GET {{baseUrl}}/announcements?sort=newest
+
+### 4. Get announcements sorted by oldest
+GET {{baseUrl}}/announcements?sort=oldest
+
+### 5. Get announcements with pagination
+GET {{baseUrl}}/announcements?page=1
+
+### 6. Combine query parameters
+GET {{baseUrl}}/announcements?search=ремонт&sort=newest&page=1
+
+### 7. Get announcement by ID
+GET {{baseUrl}}/announcements/1
+
+### 8. Create announcement #1 - For Sale
+POST {{baseUrl}}/announcements
+Content-Type: {{contentType}}
 
 {
-  "title": "iPhone 15",
-  "description": "New phone",
-  "price": 999,
-  "category": "Electronics",
-  "contactInfo": "telegram:@test"
+  "title": "Продам ноутбук ASUS VivoBook",
+  "description": "Відмінний стан, 16GB RAM, SSD 512GB, Intel i7, видеокарта 2GB",
+  "price": 18000,
+  "category": "sale",
+  "contactInfo": "0991234567"
 }
+
+### 9. Create announcement #2 - Service
+POST {{baseUrl}}/announcements
+Content-Type: {{contentType}}
+
+{
+  "title": "Професійний ремонт смартфонів",
+  "description": "Ремонт всіх моделей смартфонів: Apple, Samsung, Xiaomi та ін. Гарантія на роботи",
+  "price": 500,
+  "category": "service",
+  "contactInfo": "0992345678"
+}
+
+### 10. Create announcement #3 - Job
+POST {{baseUrl}}/announcements
+Content-Type: {{contentType}}
+
+{
+  "title": "Вакансія Junior Frontend Developer",
+  "description": "Шукаємо Junior Frontend Developer для нашої команди. Опитування з React, JavaScript, CSS/HTML",
+  "price": 0,
+  "category": "job",
+  "contactInfo": "hr@company.com"
+}
+
+### 11. Create announcement #4 - Other category
+POST {{baseUrl}}/announcements
+Content-Type: {{contentType}}
+
+{
+  "title": "Куплю стару годинник",
+  "description": "Шукаю стару механічну годинник у хорошому стані або на запчастини",
+  "price": 5000,
+  "category": "other",
+  "contactInfo": "0993456789"
+}
+
+### 12. Update announcement - change title and price
+PATCH {{baseUrl}}/announcements/1
+Content-Type: {{contentType}}
+
+{
+  "title": "Продам ноутбук ASUS VivoBook - БЮДЖЕТНА ЦІНА!!!",
+  "price": 16500
+}
+
+### 13. Update announcement - only price
+PATCH {{baseUrl}}/announcements/1
+Content-Type: {{contentType}}
+
+{
+  "price": 17000
+}
+
+### 14. Update announcement - change category
+PATCH {{baseUrl}}/announcements/2
+Content-Type: {{contentType}}
+
+{
+  "category": "sale"
+}
+
+### 15. Delete announcement
+DELETE {{baseUrl}}/announcements/4
+
+### 16. Get swagger documentation
+GET {{baseUrl}}/../../api-docs

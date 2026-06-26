@@ -1,8 +1,9 @@
-import 'dotenv/config';
+import 'dotenv/config'
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 import swaggerJsdoc from 'swagger-jsdoc'
 import { errors as celebrateErrors } from 'celebrate'
+import announcementsRouter from './src/routes/announcements.routes.js'
 
 const app = express()
 
@@ -32,8 +33,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.use(celebrateErrors())
 
-// Our routes would go here, for example:
-// app.use('/api/announcements', announcementsRouter)
+// Подключение роутера объявлений
+app.use('/api/announcements', announcementsRouter)
 
 // 404 Not Found handler - must be after all routes
 app.use((req, res) => {
@@ -81,5 +82,3 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
   console.log(`API docs: http://localhost:${PORT}/api-docs`)
 })
-import announcementsRouter from './src/routes/announcements.routes.js';
-app.use('/announcements', announcementsRouter);
