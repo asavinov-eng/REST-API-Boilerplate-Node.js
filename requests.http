@@ -25,10 +25,11 @@ GET {{baseUrl}}/announcements/1
 ### 8. Create announcement #1 - For Sale
 POST {{baseUrl}}/announcements
 Content-Type: {{contentType}}
+Authorization: Bearer PASTE_ACCESS_TOKEN
 
 {
   "title": "Продам ноутбук ASUS VivoBook",
-  "description": "Відмінний стан, 16GB RAM, SSD 512GB, Intel i7, видеокарта 2GB",
+  "description": "Відмінний стан",
   "price": 18000,
   "category": "sale",
   "contactInfo": "0991234567"
@@ -100,3 +101,45 @@ DELETE {{baseUrl}}/announcements/4
 
 ### 16. Get swagger documentation
 GET {{baseUrl}}/../../api-docs
+### REGISTER
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456",
+  "name": "Admin"
+}
+
+###
+
+### LOGIN
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456"
+}
+
+###
+
+### REFRESH TOKEN
+POST http://localhost:3000/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "PASTE_REFRESH_TOKEN"
+}
+
+###
+
+### GET CURRENT USER
+GET http://localhost:3000/auth/me
+Authorization: Bearer PASTE_ACCESS_TOKEN
+
+###
+
+### LOGOUT
+POST http://localhost:3000/auth/logout
+Authorization: Bearer PASTE_ACCESS_TOKEN

@@ -82,3 +82,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
   console.log(`API docs: http://localhost:${PORT}/api-docs`)
 })
+import cookieParser from 'cookie-parser'
+import authRoutes from './src/routes/auth.routes.js'
+app.use(cookieParser())
+app.use('/auth', authRoutes)
